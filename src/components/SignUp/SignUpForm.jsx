@@ -1,19 +1,36 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 import InputField from "../Shared/FormInputs/InputField";
 import SignUpBanner from "./SignUpBanner";
 
 const SignUpForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
+  const { createUser, handleUpdateProfile, logOut } = useAuth();
+  const navigate = useNavigate();
 
   const submitForm = (formData) => {
-    console.log(formData);
+    createUser(formData.email, formData.password)
+      .then((res) => {
+        console.log(res.user);
+        //update profile
+        handleUpdateProfile(formData.name).then(() => {
+          logOut()
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error));
+          Swal.fire({
+            icon: "success",
+            text: "You have successfully Registered",
+          });
+          navigate("/login");
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
-  console.log(errors);
+
   return (
     <div className="flex h-screen items-center justify-center p-6 md:p-0">
       <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[90%] md:w-[80%] lg:h-[80%]">

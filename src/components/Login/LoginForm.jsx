@@ -1,14 +1,33 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 import InputField from "../Shared/FormInputs/InputField";
 
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
-
-  console.log(register);
+  const { userSignIn } = useAuth();
+  const navigate = useNavigate();
 
   const submitForm = (formData) => {
-    console.log(formData);
+    userSignIn(formData.email, formData.password)
+      .then((res) => {
+        console.log(res.user);
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "Check if you have typed the correct password or email",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Invalid Login Credential",
+          text: "Check if you have typed the correct password or email",
+        });
+      });
   };
   return (
     <div className="rounded-md w-full px-6 lg:px-0 lg:w-1/3  mt-10">
