@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import InputField from "../Shared/FormInputs/InputField";
 import SignUpBanner from "./SignUpBanner";
 
@@ -9,6 +10,7 @@ const SignUpForm = () => {
   const { register, handleSubmit } = useForm();
   const { createUser, handleUpdateProfile, logOut } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const submitForm = (formData) => {
     createUser(formData.email, formData.password)
@@ -16,14 +18,25 @@ const SignUpForm = () => {
         console.log(res.user);
         //update profile
         handleUpdateProfile(formData.name).then(() => {
-          logOut()
-            .then((result) => console.log(result))
-            .catch((error) => console.error(error));
-          Swal.fire({
-            icon: "success",
-            text: "You have successfully Registered",
-          });
-          navigate("/login");
+          const userInfo = {
+            name: formData.name,
+            email: formData.email,
+          };
+          axiosPublic
+            .post("/users", userInfo)
+            .then((res) => {
+              if (res.data.insertedId) {
+                logOut()
+                  .then((result) => console.log(result))
+                  .catch((error) => console.error(error));
+                Swal.fire({
+                  icon: "success",
+                  text: "You have successfully Registered",
+                });
+                navigate("/login");
+              }
+            })
+            .catch((err) => console.log(err));
         });
       })
       .catch((error) => {

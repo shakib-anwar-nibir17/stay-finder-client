@@ -9,7 +9,7 @@ const Slider = ({ id, ref1, ref2, slideImg, header, desc }) => {
         <h2 className="text-6xl font-bold ml-5">{header}</h2>
         <p className="text-sm font-medium ml-5">{desc}</p>
         <div className="space-x-4 ml-5">
-          <button className="bg-custom-color-2 font-bold border-custom-color-2 border-2 p-4 hover:bg-transparent">
+          <button className="bg-custom-color-2 font-bold border-custom-color-2 border-2 p-4 hover:bg-[#16bac5] rounded-xl">
             Discover More
           </button>
         </div>
