@@ -4,7 +4,7 @@ const InputField = ({ register, header, type, name, placeholder }) => {
   return (
     <div className="form-control">
       <label className="label">
-        <span className="label-text">{header}</span>
+        <span className="label-text font-bold text-2xl">{header}</span>
       </label>
       <input
         {...register(name)}

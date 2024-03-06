@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import MyAccommodation from "../components/Account/MyAccommodation";
 import MyBookings from "../components/Account/MyBookings";
-import MyRecommendations from "../components/Account/MyRecommendations";
 import Profile from "../components/Account/Profile";
 import Main from "../layout/Main";
 import AccountPage from "../pages/AccountPage";
@@ -38,8 +38,8 @@ const Router = createBrowserRouter([
             element: <MyBookings />,
           },
           {
-            path: "my-recommendations",
-            element: <MyRecommendations />,
+            path: "my-accommodation",
+            element: <MyAccommodation />,
           },
         ],
       },
