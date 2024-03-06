@@ -16,7 +16,7 @@ const LoginForm = () => {
         Swal.fire({
           icon: "success",
           title: "Login Successful",
-          text: "Check if you have typed the correct password or email",
+          text: "Welcome to Stay-Finder",
         });
         navigate("/");
       })

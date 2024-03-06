@@ -1,7 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 import logo from "../../../assets/images/logo.png";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+  };
   const navLinks = (
     <>
       <li className="mr-2">
@@ -40,11 +48,25 @@ const Navbar = () => {
           Login
         </NavLink>
       </li>
+      {!!user && (
+        <li className="mr-2">
+          <NavLink
+            to="/account"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-custom-color text-white hover:bg-custom-color"
+                : " hover:border-custom-color hover:border hover:bg-white"
+            }
+          >
+            Account
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
     <div>
-      <div className="navbar">
+      <div className="navbar shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -84,20 +106,6 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <Link className="flex items-center gap-2 border border-custom-color rounded-full py-2 px-4 ">
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg> */}
             <div className="bg-gray-500 text-white rounded-full border border-gray-500 overflow-hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,6 +119,21 @@ const Navbar = () => {
                   clipRule="evenodd"
                 />
               </svg>
+            </div>
+            <div>
+              {!!user && (
+                <div className="flex items-center gap-3">
+                  <h1 className="text-custom-color font-bold">
+                    {user.displayName}
+                  </h1>
+                  <button
+                    onClick={handleSignOut}
+                    className="btn btn-sm bg-custom-color-2 text-white hover:bg-red-500"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </Link>
         </div>
