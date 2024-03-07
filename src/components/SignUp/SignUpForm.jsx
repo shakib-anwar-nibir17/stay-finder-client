@@ -17,7 +17,7 @@ const SignUpForm = () => {
       .then((res) => {
         console.log(res.user);
         //update profile
-        handleUpdateProfile(formData.name).then(() => {
+        handleUpdateProfile(formData.name, formData.photo).then(() => {
           const userInfo = {
             name: formData.name,
             email: formData.email,
@@ -62,6 +62,13 @@ const SignUpForm = () => {
               name="name"
               header="Name"
               placeholder="Your name"
+              type="text"
+            />
+            <InputField
+              register={register}
+              name="photo"
+              header="Image"
+              placeholder="Your img url"
               type="text"
             />
             <InputField

@@ -12,6 +12,7 @@ const InputField = ({ register, header, type, name, placeholder }) => {
         name={name}
         placeholder={placeholder}
         className="input input-bordered border-custom-color"
+        defaultValue=""
         required
       />
     </div>
