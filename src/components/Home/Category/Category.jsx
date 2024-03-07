@@ -1,3 +1,5 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
 import image1 from "../../../assets/icons/01.png";
 import image2 from "../../../assets/icons/02.png";
 import image3 from "../../../assets/icons/03.png";
@@ -73,9 +75,9 @@ const Category = () => {
       amount: 90,
     },
   ];
-
+  AOS.init();
   return (
-    <div className="grid grid-cols-5 gap-5">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5  gap-5 mt-20">
       {hotels.map((hotel) => (
         <CategoryCard key={hotel.id} hotel={hotel} />
       ))}

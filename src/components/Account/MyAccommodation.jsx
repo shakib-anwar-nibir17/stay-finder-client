@@ -9,7 +9,7 @@ import PlaceUploadForm from "../Shared/PlaceUpload/PlaceUploadForm";
 const MyAccommodation = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [show, setShow] = useState(false);
   const handleFormSubmit = (data) => {
     console.log(data);
@@ -30,6 +30,7 @@ const MyAccommodation = () => {
         }
       })
       .catch((err) => console.log(err));
+    reset();
   };
 
   return (
