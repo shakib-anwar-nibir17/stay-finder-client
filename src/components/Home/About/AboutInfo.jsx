@@ -38,6 +38,11 @@ const AboutInfo = () => {
             </li>
           ))}
         </ul>
+        <div>
+          <button className="px-6 py-2 bg-custom-color text-white font-bold hover:bg-custom-color-2 mt-3">
+            Read More
+          </button>
+        </div>
       </div>
     </div>
   );

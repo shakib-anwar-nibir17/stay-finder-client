@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import InputField from "../Shared/FormInputs/InputField";
+import Google from "../Shared/SocialSingIn/Google";
 import SignUpBanner from "./SignUpBanner";
 
 const SignUpForm = () => {
@@ -87,7 +88,7 @@ const SignUpForm = () => {
             />
             <div className="form-control mt-6">
               <button className="btn bg-custom-color text-white font-semibold hover:bg-custom-color-2">
-                Sign in
+                Sign Up
               </button>
             </div>
           </form>
@@ -98,15 +99,7 @@ const SignUpForm = () => {
             <hr className="flex-1" />
           </div>
           {/* sign with google */}
-          <button>
-            <div className="mx-auto flex h-[50px] w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow">
-              <div className="flex h-full w-[50%] items-center bg-[#00B98E] pl-4 text-sm text-white">
-                Sign With
-              </div>
-              <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#00B98E] group-hover:hidden"></span>
-              <span className="pr-4 text-4xl font-bold text-[#00B98E]">G+</span>
-            </div>
-          </button>
+          <Google />
           <p className="text-center font-medium mt-8 mb-10">
             Already have an account?
             <span className="text-custom-color ml-2">
