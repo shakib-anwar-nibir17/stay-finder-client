@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const PhotoForm = ({ register }) => {
   return (
-    <div className="flex gap-4 items-center relative">
+    <div className="flex gap-4 items-center">
       <div className="grow">
         <div className="space-x-3">
           <input
