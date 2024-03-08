@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MyAccommodation from "../components/Account/MyAccommodation";
 import MyBookings from "../components/Account/MyBookings";
-import Profile from "../components/Account/Profile";
 import Main from "../layout/Main";
 import AccountPage from "../pages/AccountPage";
 import Homepage from "../pages/Homepage";
@@ -29,10 +28,6 @@ const Router = createBrowserRouter([
         path: "/account",
         element: <AccountPage />,
         children: [
-          {
-            path: "profile",
-            element: <Profile />,
-          },
           {
             path: "my-bookings",
             element: <MyBookings />,

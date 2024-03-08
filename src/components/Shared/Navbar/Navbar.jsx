@@ -51,7 +51,7 @@ const Navbar = () => {
       {!!user && (
         <li className="mr-2">
           <NavLink
-            to="/account/profile"
+            to="/account/my-accommodation"
             className={({ isActive }) =>
               isActive
                 ? "bg-custom-color text-white hover:bg-custom-color"

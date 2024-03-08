@@ -3,9 +3,10 @@ import AccountLinks from "../components/Account/AccountLinks";
 
 const AccountPage = () => {
   return (
-    <div>
-      <h1>Account Page</h1>
-      <AccountLinks />
+    <div className="min-h-screen">
+      <div className="mt-8">
+        <AccountLinks />
+      </div>
       <Outlet />
     </div>
   );

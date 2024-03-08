@@ -1,6 +1,5 @@
 import { BsFillBuildingsFill } from "react-icons/bs";
 import { FaShoppingBag } from "react-icons/fa";
-import { ImProfile } from "react-icons/im";
 import { NavLink } from "react-router-dom";
 
 const AccountLinks = () => {
@@ -15,13 +14,6 @@ const AccountLinks = () => {
   };
   return (
     <nav className="w-full flex justify-center gap-5">
-      <NavLink
-        to="/account/profile"
-        className={({ isActive }) => generateClassName(isActive)}
-      >
-        <ImProfile />
-        My Profile
-      </NavLink>
       <NavLink
         to="/account/my-bookings"
         className={({ isActive }) => generateClassName(isActive)}
