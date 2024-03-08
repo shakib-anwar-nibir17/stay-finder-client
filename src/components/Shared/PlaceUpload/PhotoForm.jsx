@@ -6,25 +6,25 @@ const PhotoForm = ({ register }) => {
       <div className="grow">
         <div className="space-x-3">
           <input
-            {...register("image-1")}
+            {...register("image1")}
             type="text"
-            name="image-1"
+            name="image1"
             placeholder="paste your image url"
             className="input input-bordered border-custom-color"
             required
           />
           <input
-            {...register("image-2")}
+            {...register("image2")}
             type="text"
-            name="image-2"
+            name="image2"
             placeholder="paste your image url"
             className="input input-bordered border-custom-color"
             required
           />
           <input
-            {...register("image-3")}
+            {...register("image3")}
             type="text"
-            name="image-3"
+            name="image3"
             placeholder="paste your image url"
             className="input input-bordered border-custom-color"
             required
