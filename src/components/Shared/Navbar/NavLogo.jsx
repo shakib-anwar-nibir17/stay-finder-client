@@ -11,7 +11,7 @@ const NavLogo = () => {
         width="60"
         height="60"
       />
-      <h1 className="text-3xl font-bold">
+      <h1 className="text-3xl font-bold hidden md:block">
         STAY <span className="text-custom-color">FINDER</span>
       </h1>
     </Link>
