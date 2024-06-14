@@ -14,11 +14,11 @@ const NavMenu = () => {
         </li>
       </NavLink>
       <NavLink
-        to="/service"
+        to="/rooms"
         className={({ isActive }) => (isActive ? activeLink : normalLink)}
       >
         <li className="cursor-pointer  rounded-full px-6 py-2 hover:text-white hover:bg-custom-color">
-          Services
+          Rooms
         </li>
       </NavLink>
       <NavLink
