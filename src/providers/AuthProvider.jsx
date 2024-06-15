@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
+import { clearCookie } from "../api/auth";
 import { app } from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
@@ -41,8 +42,9 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  const logOut = () => {
+  const logOut = async () => {
     setLoading(true);
+    await clearCookie();
     return signOut(auth);
   };
 
