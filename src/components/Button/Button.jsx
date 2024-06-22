@@ -9,13 +9,13 @@ const Button = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
           disabled:opacity-70
           disabled:cursor-not-allowed
           rounded-lg
-          hover:opacity-80
+          hover:opacity-90
           transition
           px-4
           w-full
-          ${outline ? "bg-white" : "bg-#00B98E0"}
-          ${outline ? "border-black" : "border-#00B98E"}
-          ${outline ? "text-black" : "text-white"}
+          ${outline ? "bg-custom-color" : "bg-white"}
+          ${outline ? "border-custom-color" : "border-black"}
+          ${outline ? "text-white" : "text-black"}
           ${small ? "text-sm" : "text-md"}
           ${small ? "py-1" : "py-3"}
           ${small ? "font-light" : "font-semibold"}
