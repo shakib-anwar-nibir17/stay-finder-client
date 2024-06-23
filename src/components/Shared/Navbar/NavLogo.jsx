@@ -5,13 +5,13 @@ const NavLogo = () => {
   return (
     <Link to="/" className="flex items-center gap-2">
       <img
-        className="hidden md:block"
+        // className="hidden md:block"
         src={logoImg}
         alt="logo"
         width="60"
         height="60"
       />
-      <h1 className="text-3xl font-bold hidden md:block">
+      <h1 className="text-xl font-bold">
         STAY <span className="text-custom-color">FINDER</span>
       </h1>
     </Link>

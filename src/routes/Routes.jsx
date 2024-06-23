@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { getRoom } from "../api/rooms";
+import DashboardLayout from "../layouts/DashboardLayout";
 import Main from "../layouts/Main";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home/Home";
@@ -36,4 +37,13 @@ export const router = createBrowserRouter([
   },
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignUp /> },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [],
+  },
 ]);
