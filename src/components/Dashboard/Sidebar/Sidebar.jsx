@@ -11,9 +11,9 @@ import { GrLogout } from "react-icons/gr";
 import useAuth from "../../../hooks/useAuth";
 import useRole from "../../../hooks/useRole";
 import NavLogo from "../../Shared/Navbar/NavLogo";
-import AdminMenu from "./AdminMenu";
-import GuestMenu from "./GuestMenu";
-import HostMenu from "./HostMenu";
+import AdminMenu from "../Menu/AdminMenu";
+import GuestMenu from "../Menu/GuestMenu";
+import HostMenu from "../Menu/HostMenu";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
