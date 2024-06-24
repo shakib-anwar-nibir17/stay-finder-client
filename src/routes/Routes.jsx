@@ -4,6 +4,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Main from "../layouts/Main";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
+import Statistics from "../pages/Dashboard/Common/Statistics";
 import MyBookings from "../pages/Dashboard/Guest/MyBookings";
 import AddRoom from "../pages/Dashboard/Host/AddRoom";
 import ManageBookings from "../pages/Dashboard/Host/ManageBookings";
@@ -53,6 +54,14 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        index: true,
+        element: (
+          <PrivateRoute>
+            <Statistics />
+          </PrivateRoute>
+        ),
+      },
       {
         path: "add-room",
         element: (
