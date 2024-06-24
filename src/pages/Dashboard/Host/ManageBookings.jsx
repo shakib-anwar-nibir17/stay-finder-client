@@ -1,19 +1,28 @@
-import { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { getHostRooms } from "../../../api/rooms";
-import RoomDataRow from "../../../components/Dashboard/Sidebar/TableRows/RoomDataRow";
+import { getHostBookings } from "../../../api/bookings";
+import TableRow from "../../../components/Dashboard/Sidebar/TableRows/TableRow";
+import Loader from "../../../components/Shared/Loader";
 import useAuth from "../../../hooks/useAuth";
 
-const MyListings = () => {
-  const { user } = useAuth();
-  const [rooms, setRooms] = useState([]);
-  useEffect(() => {
-    getHostRooms(user?.email).then((data) => setRooms(data));
-  }, [user]);
+const ManageBookings = () => {
+  const { user, loading } = useAuth();
+  const {
+    data: bookings = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["bookings", user?.email],
+    enabled: !loading,
+    queryFn: async () => await getHostBookings(user?.email),
+  });
+  console.log(bookings);
+  if (isLoading) return <Loader />;
   return (
     <>
       <Helmet>
-        <title>My Listings | Dashboard</title>
+        <title>Manage Bookings</title>
       </Helmet>
 
       <div className="container mx-auto px-4 sm:px-8">
@@ -33,7 +42,7 @@ const MyListings = () => {
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Location
+                      Guest Info
                     </th>
                     <th
                       scope="col"
@@ -57,22 +66,16 @@ const MyListings = () => {
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Delete
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Update
+                      Action
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Room row data */}
-
-                  {rooms.map((room) => (
-                    <RoomDataRow key={room._id} room={room} />
-                  ))}
+                  {/* Table row data */}{" "}
+                  {bookings &&
+                    bookings.map((booking) => (
+                      <TableRow key={booking._id} booking={booking} />
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -83,4 +86,4 @@ const MyListings = () => {
   );
 };
 
-export default MyListings;
+export default ManageBookings;

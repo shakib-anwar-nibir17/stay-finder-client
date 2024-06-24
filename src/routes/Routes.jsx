@@ -6,6 +6,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import MyBookings from "../pages/Dashboard/Guest/MyBookings";
 import AddRoom from "../pages/Dashboard/Host/AddRoom";
+import ManageBookings from "../pages/Dashboard/Host/ManageBookings";
 import MyListings from "../pages/Dashboard/Host/MyListings";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home/Home";
@@ -96,6 +97,14 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             <MyBookings />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "manage-bookings",
+        element: (
+          <HostRoute>
+            <ManageBookings />
+          </HostRoute>
         ),
       },
     ],
