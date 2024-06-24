@@ -9,12 +9,17 @@ import { BsGraphUp } from "react-icons/bs";
 import { FcSettings } from "react-icons/fc";
 import { GrLogout } from "react-icons/gr";
 import useAuth from "../../../hooks/useAuth";
+import useRole from "../../../hooks/useRole";
 import NavLogo from "../../Shared/Navbar/NavLogo";
+import AdminMenu from "./AdminMenu";
+import GuestMenu from "./GuestMenu";
+import HostMenu from "./HostMenu";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [toggle, setToggle] = useState(false);
   const [isActive, setActive] = useState(false);
+  const [role] = useRole();
 
   //   For guest/host menu item toggle button
   const toggleHandler = (event) => {
@@ -57,7 +62,7 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/* If a user is host */}
-            <ToggleBtn toggleHandler={toggleHandler} />
+            {role === "host" && <ToggleBtn toggleHandler={toggleHandler} />}
             <nav>
               <MenuItem
                 icon={BsGraphUp}
@@ -65,7 +70,10 @@ const Sidebar = () => {
                 address="/dashboard"
               />
 
-              {/* Menu Items */}
+              {/* Host Menu Items */}
+              {role === "guest" && <GuestMenu />}
+              {role === "host" ? toggle ? <HostMenu /> : <GuestMenu /> : ""}
+              {role === "admin" && <AdminMenu />}
             </nav>
           </div>
         </div>

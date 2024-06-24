@@ -2,12 +2,17 @@ import { createBrowserRouter } from "react-router-dom";
 import { getRoom } from "../api/rooms";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Main from "../layouts/Main";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import AddRoom from "../pages/Dashboard/Host/AddRoom";
+import MyListings from "../pages/Dashboard/Host/MyListings";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home/Home";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import RoomPage from "../pages/Rooms/Rooms";
 import SignUp from "../pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute";
+import HostRoute from "./HostRoute";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -44,6 +49,37 @@ export const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    children: [],
+    children: [
+      {
+        path: "add-room",
+        element: (
+          <PrivateRoute>
+            <HostRoute>
+              <AddRoom />
+            </HostRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-listings",
+        element: (
+          <PrivateRoute>
+            <HostRoute>
+              <MyListings />
+            </HostRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manage-users",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
 ]);
